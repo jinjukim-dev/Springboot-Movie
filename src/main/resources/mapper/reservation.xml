@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.study.reservation" >
+
+	<insert id="insert" parameterType="org.study.reservation.ReservationInfoVO">
+		insert into reservation (id, cinema_code, cinema_room, movie_code, schedule_code, seat_num) values (#{id}, #{cinema_code}, #{cinema_room}, #{movie_code}, #{schedule_code}, #{seat_num})
+	</insert>
+	
+	<select id="selectAll" resultType="org.study.reservation.ReservationVO">
+		select * from reservation
+	</select>
+	
+	<select id="selectAllReserve" resultType="org.study.admin.ReserveVO">
+		select * from reservation
+	</select>
+	
+	<!-- 예매 내역 조회 -->
+	<select id="selectIdReserve" resultType="org.study.admin.DataVO">
+		select r.id, mv.name, c.cinema_name, s.cinema_room, m.movie_sub, s.start_time, s.schedule_date
+		from cinemainfo c, movie m, schedule s, reservation r, member mv
+		where r.cinema_code=c.cinema_code and r.movie_code=m.movie_code
+		and r.schedule_code=s.schedule_code and r.id=mv.id and r.id = #{id};
+	</select>
+	
+	<!-- 예매수 조회 -->
+	<select id="selectCount" resultType="java.util.Map">
+		select movie_code, count(movie_code) as cnt from reservation group by movie_code order by cnt desc limit 5
+	</select>
+	
+	<!-- 중복처리 -->
+	<select id="selectDup" parameterType="java.util.Map" resultType="org.study.reservation.ReservationVO" >
+		select * from reservation where schedule_code = #{schedule_code} and seat_num IN(#{seat})
+	</select>
+
+	<!-- 좌석수 update -->
+	<update id="updateSeat_num" parameterType="org.study.schedule.ScheduleVO2">
+		update schedule set seat_qnt = seat_qnt - 1 where schedule_code = #{schedule_code}
+	</update>
+
+</mapper>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.study.member" >
+
+	<select id="selectByEmail" parameterType="java.lang.String" resultType="org.study.member.MemberVO">
+ 		select * from member where EMAIL = #{email}
+ 	</select>
+ 	
+ 	<insert id="insert" parameterType="org.study.member.MemberVO" useGeneratedKeys="true" keyProperty="id">
+ 		insert into member (id, password, name, email, regDate) values (#{id}, #{password}, #{name}, #{email}, now())
+ 	</insert>
+ 	
+ 	<update id="update" parameterType="org.study.member.MemberVO">
+ 		update member set name = #{name}, password = #{password} where id = #{id}
+ 	</update>
+ 	
+ 	<select id="selectAll" resultType="org.study.member.MemberVO">
+ 		select * from member
+ 	</select>
+ 	
+ 	<select id="count" resultType="java.lang.Integer">select count(*) from Member</select>
+ 	
+ 	<select id="selectById" parameterType="java.lang.String" resultType="org.study.member.MemberVO">
+ 		select * from member where id = #{id}
+ 	</select>
+ 	
+ 	<select id="selectByRegdate" parameterType="java.util.Map" resultType="org.study.member.MemberVO" >
+ 		select * from MEMBER where REGDATE between #{from} and ${to} order by REGDATE desc
+ 	</select>
+ 	
+ 	<delete id="deleteMember" parameterType="org.study.member.MemberVO">
+ 	delete from member where id=#{id};
+ 	</delete>
+ 	
+ 	<select id="selectName" parameterType="java.lang.String" resultType="org.study.member.MemberVO">
+ 		select name from member where id = #{id}
+ 	</select>
+</mapper>

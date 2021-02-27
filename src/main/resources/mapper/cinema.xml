@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.study.cinema" >
+ 	<!-- <select id="selectByEmail" parameterType="java.lang.String" resultType="org.study.member.MemberVO">
+ 		select * from member where EMAIL = #{email}
+ 	</select> -->
+ 	
+ 	
+ 	<insert id="insertCinema" parameterType="org.study.admin.CinemaVO" useGeneratedKeys="true" keyProperty="id">
+ 		insert into cinemainfo (cinema_code, cinema_location, cinema_name, cinema_info) values (#{cinema_code},  #{cinema_location}, #{cinema_name}, #{cinema_info})
+ 	</insert>
+ 	
+ 	<insert id="insertRoom" parameterType="org.study.admin.CinemaRoomVO" useGeneratedKeys="true" keyProperty="id">
+ 		insert into cinemacodeinfo (cinema_code, cinema_room, cinema_seat) values (#{cinema_code},  #{cinema_room}, #{cinema_seat})
+ 	</insert>
+ 	
+ 	<select id="reserveSelectCinema" resultType="org.study.cinema.CinemaVO2">
+ 		select * from cinemainfo
+ 	</select>
+ 	
+ 	<select id="SelectCinema" resultType="org.study.admin.CinemaVO">
+ 		select * from cinemainfo
+ 	</select>
+ 	
+ 	<delete id="deleteCinema" parameterType="org.study.admin.CinemaVO">
+ 	delete from cinemainfo where cinema_code=#{cinema_code};
+ 	</delete>
+ 	
+ 	<delete id="deleteCinemaRoom" parameterType="java.util.Map">
+ 	delete from cinemacodeinfo where cinema_code = #{cinema_code} and cinema_room=#{cinema_room};
+ 	</delete>
+ 	
+ 	<select id="selectByCode" resultType="org.study.admin.CinemaVO">select * from cinemainfo where cinema_code = #{cinema_code}</select>
+ 	
+ 	<select id="selectCinemaInfo" resultType="org.study.cinema.CinemaVO2">
+ 		select * from cinemainfo where cinema_code = #{cinema_code}
+ 	</select>
+ 	
+ 	<select id="selectCinemaRoomInfo" parameterType="java.util.Map"  resultType="org.study.cinemaRoom.CinemaRoomVO2" >
+ 		select * from cinemacodeinfo where cinema_code = #{cinema_code} and cinema_room = #{cinema_room}
+ 	</select>
+ 	
+ 	<select id="selectMovieCode" resultType="org.study.admin.CinemaRoomVO">select * from cinemacodeinfo where cinema_code = #{cinema_code}</select>
+ 
+</mapper>

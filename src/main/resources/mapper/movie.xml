@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.study.movie" >
+ 	<insert id="insert" parameterType="org.study.admin.MovieVO" useGeneratedKeys="true" keyProperty="id">
+ 		insert into movie (movie_code, movie_sub, movie_direc, movie_gen,movie_open,movie_age,movie_time, movie_poster) values (#{movie_code}, #{movie_sub}, #{movie_direc},  #{movie_gen}, #{movie_open}, #{movie_age}, #{movie_time}, #{movie_poster})
+ 	</insert>
+ 	
+ 	<!-- 최근등록된 영화부터 보여주기 -->
+ 	<select id="reserveSelectMovie" resultType="org.study.movie.MovieVO2">
+ 		select * from movie
+ 	</select>
+ 	<select id="selectMovieInfo" resultType="org.study.movie.MovieVO2">
+ 		select * from movie where movie_code = #{movie_code}
+ 	</select>
+ 	
+ 	<select id="selectMovie" resultType="org.study.admin.MovieVO">
+ 		select * from movie order by movie_code desc
+ 	</select>
+ 	
+	<delete id="deleteMovie" parameterType="org.study.admin.MovieVO">
+ 	delete from movie where movie_code=#{movie_code};
+ 	</delete>
+ 	
+ 	<select id="selectByRegdate" parameterType="java.util.Map" resultType="org.study.member.MemberVO" >
+ 		select * from MEMBER where REGDATE between #{from} and ${to} order by REGDATE desc
+ 	</select>
+</mapper>
