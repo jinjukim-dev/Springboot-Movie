@@ -5,7 +5,7 @@
 
 <div class="container">
 	<br /><br />
-	<h3>${authInfo.name}님의  예매 내역</h3>
+	<h3 style="font-size: 35px; font-weight: bold;">${authInfo.name}님의  예매 내역</h3>
 	<br /><br />
 	<table class="table">
 		<thead>

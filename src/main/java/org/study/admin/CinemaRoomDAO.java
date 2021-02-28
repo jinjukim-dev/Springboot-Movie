@@ -20,7 +20,7 @@ public class CinemaRoomDAO {
 	}
 	
 	public List<CinemaRoomVO> selectCode(int cinema_code) throws Exception  {
-		List<CinemaRoomVO> results = sqlSession.selectList("org.study.cinema.selectMovieCode", cinema_code);
+		List<CinemaRoomVO> results = sqlSession.selectList("org.study.cinema.selectCinemaCode", cinema_code);
 		return results;
 	}
 	

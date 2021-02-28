@@ -27,7 +27,7 @@
 				<form:option value="경기"/>
 			</form:select>
 			<br />
-			<form:input path="cinema_name" class="form-control"  placeholder="지점명" />
+			<form:input path="cinema_name" class="form-control"  placeholder="지점명 ex)OO점" />
 			<br />
 			<form:input path="cinema_info" class="form-control"  placeholder="지점 주소"/>
 			<br/>

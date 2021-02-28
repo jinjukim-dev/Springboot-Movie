@@ -126,7 +126,6 @@ public class ReservationController {
 
 		List<ScheduleVO2> timeList = scheduleService.reserveSelectTime(movie_code, cinema_code, day);
 
-		//////////////////////////////////////////////////////////////////
 		/* 영화정보 */
 		MovieVO movieInfo = movieService.selectMovieInfo(movie_code);// 선택된movie
 		CinemaVO2 cinemaInfo = cinemaService.selectCinemaInfo(cinema_code);// 선택된cinema
@@ -253,16 +252,17 @@ public class ReservationController {
 		return "home";
 	}
 
+	/* admin - 예매 관리 */
 	@GetMapping("reserveList")
 	public String getReserveList(Model model, HttpServletRequest request) throws Exception {
 
 		List<DataVO> data = dataDAO.selectAll();
 		model.addAttribute("data", data);
-
-		return "reservation/reserveList";
+		model.addAttribute("a_center", "reservation/reserveList");
+		return "a_home";
 	}
-
-	/* 예매 확인 */
+	
+	/* 나의 예매 내역 확인 */
 	@GetMapping("myReserveList")
 	public String memreserveList(Model model, HttpServletRequest request, HttpSession session) throws Exception {
 		

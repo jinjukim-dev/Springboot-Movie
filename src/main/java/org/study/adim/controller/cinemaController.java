@@ -30,11 +30,13 @@ public class cinemaController {
 	@Autowired
 	CinemaRoomDAO cinemaRoomDAO;
 	
-	/* 지점등록 */
+	/* admin - 지점등록, 상영관 등록 */
+	
+	/* 지점등록 메뉴*/
 	@GetMapping("cinemaRegist")
 	public String cinemaRegist(Model model) {
 		model.addAttribute("cinemaVO", new CinemaVO());
-		model.addAttribute("a_center", "movie/cinemaRegist");
+		model.addAttribute("a_center", "cinema/cinemaRegist");
 		return "a_home";
 	}
 	
@@ -44,31 +46,30 @@ public class cinemaController {
 		
 		return "redirect:http://localhost:8080/springteam04/cinema/cinemaList";
 	}
-	
-	/* 상영관 등록 내역 */
+	/////////////////////////
+	/* 상영관 등록 메뉴*/
+	/* 지점 리스트 보여주기 */
 	@GetMapping("cinemaList")
 	public String cinemaList(Model model) throws Exception {
 		List<CinemaVO> cinemaList = cinemaDAO.selectAll();
 		model.addAttribute("cinemaList", cinemaList);
-		model.addAttribute("a_center", "movie/cinemaList");	
+		model.addAttribute("a_center", "cinema/cinemaList");	
 		return "a_home";
 	}
 	
-	/* 영화관 지역 및 위치 등록*/
+	/* 상영관 등록 */
 	@PostMapping("cinemaInfoRegist")
 	public String cinemaInfoRegist(CinemaRoomVO cinemaRoomVO, Model model, HttpServletRequest request) throws Exception {
-		String code=request.getParameter("code");
+		String code=request.getParameter("cinema_code");
 		int cinema_code=Integer.parseInt(code);
-		/* log.info("memberVo:"+memberVO.getEmail()); */
-		CinemaVO cinemaVO = new CinemaVO();
-	    cinemaVO=cinemaDAO.selectByCode(cinema_code);
-	    model.addAttribute("cinemaVO", cinemaVO);
-	
-	    
-		return "movie/cinemaInfoRegist";
+		log.info("cinema_code : "+cinema_code);
+		
+		CinemaVO list =cinemaDAO.selectByCode(cinema_code);
+	    model.addAttribute("cinemaVO", list);
+	    model.addAttribute("a_center", "cinema/cinemaInfoRegist");
+		return "a_home";
 	}
 	
-	/* 영화관 정보 및 좌석 등록 */
 	@PostMapping("cinemaRoomRegist")
 	public String cinemaRoomRegist(CinemaRoomVO cinemaRoomVO, Model model,HttpServletRequest request) throws Exception {
 		/* log.info("memberVo:"+memberVO.getEmail()); */
@@ -87,7 +88,7 @@ public class cinemaController {
 		return "movie/cinemaList";
 	}
 	
-	/* 영화관 지역 및 위치 삭제*/
+	/* 상영관 삭제*/
 	@PostMapping("cinemaInfoDelete")
 	public String cinemaInfoDelete(CinemaRoomVO cinemaRoomVO, Model model, HttpServletRequest request) throws Exception {
 		String code=request.getParameter("code");
@@ -102,16 +103,23 @@ public class cinemaController {
 	
 		return "movie/cinemaList";
 	}
+	
+	/* 지점에 상영관 리스트보기 */
 	@PostMapping("cinemaInfoList")
 	public String cinemaInfoList(Model model,HttpServletRequest request) throws Exception {
-		String code=request.getParameter("code");
+		String code=request.getParameter("cinema_code");
 		int cinema_code=Integer.parseInt(code);
-		List<CinemaRoomVO>  cinemaList = cinemaRoomDAO.selectCode(cinema_code);
-		model.addAttribute("cinemaList", cinemaList);
-	
-	
-		return "movie/cinemaInfoList";
+		
+//		List<CinemaRoomVO>  cinemaList = cinemaRoomDAO.selectCode(cinema_code);
+//		model.addAttribute("cinemaList", cinemaList);
+		model.addAttribute("a_center", "cinema/cinemaInfoList");
+		return "a_home";
 	}
+	
+	/* 지점 삭제 */
+	
+	////////////////////////////////////////////////////
+	
 	
 	@PostMapping("cinemaInfoRoomDelete")
 	public String cinemaInfoRoomDelete(CinemaRoomVO cinemaRoomVO, Model model, HttpServletRequest request) throws Exception {

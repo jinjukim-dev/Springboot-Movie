@@ -28,7 +28,7 @@
 							</c:choose>
 							<img src="images/${movie.movie_poster}" alt="part image" class="img-fluid" height="330px" width="210px">
 							<h4 class="mt-4" style="font-weight: bold">${movie.movie_sub}</h4>
-							<p class="mt-3">예매수 : ${map.cnt}</p>
+							<p class="mt-3"><%-- 예매수 : ${map.cnt} --%></p>
 							<input type="button" class="btn btn-dark"  value="예매" id="subBtn"  onclick="#" style="width:190px"/>
 						</div>
 					</c:if>

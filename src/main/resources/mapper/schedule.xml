@@ -68,10 +68,13 @@
 		delete from schedule where schedule_code=#{schedule_code};
 	</delete>
 	
+	<!-- admin - 예매 관리 -->
 	<select id="selectData" resultType="org.study.admin.DataVO">
-	select distinct r.id "id", m.name "name", c.cinema_name "cinema_name", r.cinema_room "cinema_room", mo.movie_sub "movie_sub",s.schedule_date  "schedule_date",  s.start_time "start_time", r.seat_num "seat_num" 
-	from reservation r, member m, cinemainfo c, cinemacodeinfo d, movie mo, schedule s
-	where r.id=m.id and r.cinema_code=c.cinema_code and r.cinema_room=d.cinema_room and r.movie_code=mo.movie_code and r.schedule_code=s.schedule_code;
+		select distinct r.id "id", m.name "name", c.cinema_name "cinema_name", s.cinema_room "cinema_room", 
+		mo.movie_sub "movie_sub", s.schedule_date  "schedule_date",  s.start_time "start_time", r.seat_num "seat_num" 
+		from reservation r, member m, cinemainfo c, movie mo, schedule s
+		where r.id=m.id and r.cinema_code=c.cinema_code and
+	    r.movie_code=mo.movie_code and r.schedule_code=s.schedule_code;
 	</select>
 	
 	<select id="selectReserveId"  resultType="org.study.admin.DataVO">

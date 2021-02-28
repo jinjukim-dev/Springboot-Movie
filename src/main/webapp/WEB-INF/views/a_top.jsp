@@ -52,7 +52,7 @@
                             <ul class="menu">                          
                                 <li><a href="http://localhost:8080/springteam04/member/memberList">회원 관리</a></li>                                                             
                                 <li><a href="http://localhost:8080/springteam04/movie/movieList">영화 관리</a></li>
-                                <li><a href="http://localhost:8080/springteam04/reservation/reserveList">예약 관리</a></li>           
+                                <li><a href="http://localhost:8080/springteam04/reservation/reserveList">예매 관리</a></li>           
                                 <li><a href="http://localhost:8080/springteam04/movie/movieRegist">영화 등록</a></li>
                                 <li><a href="http://localhost:8080/springteam04/cinema/cinemaRegist" >지점 등록</a></li>
                                 <li><a href="http://localhost:8080/springteam04/cinema/cinemaList" >상영관 등록</a></li>                                                                                                                                

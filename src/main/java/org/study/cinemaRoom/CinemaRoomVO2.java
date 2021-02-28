@@ -5,7 +5,6 @@ public class CinemaRoomVO2 {
 	private String cinema_room;
 	private int cinema_seat;
 	
-	
 	public int getCinema_seat() {
 		return cinema_seat;
 	}

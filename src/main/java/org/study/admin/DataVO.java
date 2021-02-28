@@ -9,6 +9,7 @@ public class DataVO {
 	private String movie_sub;
 	private String start_time;
 	private String schedule_date;
+	private String seat_num;
 	public String getId() {
 		return id;
 	}
@@ -50,6 +51,12 @@ public class DataVO {
 	}
 	public void setSchedule_date(String schedule_date) {
 		this.schedule_date = schedule_date;
+	}
+	public String getSeat_num() {
+		return seat_num;
+	}
+	public void setSeat_num(String seat_num) {
+		this.seat_num = seat_num;
 	}
 	
 }

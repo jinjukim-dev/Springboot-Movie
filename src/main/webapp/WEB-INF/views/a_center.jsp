@@ -5,5 +5,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
  	
 <div style="text-align: center; margin-top: 200px; margin-bottom: 200px;">
-	<h1 id="title">Welcome Admin Page🎈</h1>
+	<h1 style="font-size: 35px; font-weight: bold;">Welcome Admin Page🎈</h1>
 </div>

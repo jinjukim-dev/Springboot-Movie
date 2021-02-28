@@ -13,10 +13,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.study.admin.CinemaRoomVO;
 import org.study.admin.CinemaVO;
 import org.study.member.AuthInfo;
@@ -169,7 +172,7 @@ public class MemberController {
 		return "home";
 	}
 
-	/* 회원 리스트 */
+	/* admin - 회원 리스트 */
 	@GetMapping("memberList")
 	public String memberList(Model model) throws Exception {
 		List<MemberVO> memberList = memberDAO.selectAll();
@@ -178,15 +181,13 @@ public class MemberController {
 		return "a_home";
 	}
 
-	/* 회원 삭제 */
-	@PostMapping("memberDelete")
-	public String cinemaInfoDelete(Model model, HttpServletRequest request) throws Exception {
-		String id = request.getParameter("id");
-
+	/* admin - 회원 삭제 */
+	@PostMapping("memDelete")
+	public String memDelete( Model model, HttpServletRequest request) throws Exception {
+		String id=request.getParameter("id");
 		MemberVO memberVO = new MemberVO();
 		memberDAO.delete(id);
-		model.addAttribute("memberVO", memberVO);
-
+	    model.addAttribute("memberVO", memberVO);
 		return "redirect:memberList";
 	}
 }

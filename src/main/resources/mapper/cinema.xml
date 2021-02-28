@@ -30,7 +30,9 @@
  	delete from cinemacodeinfo where cinema_code = #{cinema_code} and cinema_room=#{cinema_room};
  	</delete>
  	
- 	<select id="selectByCode" resultType="org.study.admin.CinemaVO">select * from cinemainfo where cinema_code = #{cinema_code}</select>
+ 	<select id="selectByCode" resultType="org.study.admin.CinemaVO">
+ 	select * from cinemainfo where cinema_code = #{cinema_code}
+ 	</select>
  	
  	<select id="selectCinemaInfo" resultType="org.study.cinema.CinemaVO2">
  		select * from cinemainfo where cinema_code = #{cinema_code}
@@ -40,6 +42,8 @@
  		select * from cinemacodeinfo where cinema_code = #{cinema_code} and cinema_room = #{cinema_room}
  	</select>
  	
- 	<select id="selectMovieCode" resultType="org.study.admin.CinemaRoomVO">select * from cinemacodeinfo where cinema_code = #{cinema_code}</select>
- 
+ 	<select id="selectCinemaCode" resultType="org.study.admin.CinemaRoomVO">
+ 		select s.cinema_room, s.seat_qnt from cinemainfo c, schedule s where c.cinema_code=s.cinema_code and c.cinema_code = #{cinema_code}
+ 	</select>
+
 </mapper>
