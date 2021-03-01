@@ -3,7 +3,8 @@
 <mapper namespace="org.study.reservation" >
 
 	<insert id="insert" parameterType="org.study.reservation.ReservationInfoVO">
-		insert into reservation (id, cinema_code, cinema_room, movie_code, schedule_code, seat_num) values (#{id}, #{cinema_code}, #{cinema_room}, #{movie_code}, #{schedule_code}, #{seat_num})
+		insert into reservation (id, cinema_code, movie_code, schedule_code, cinemaroom_code) values 
+		(#{id}, #{cinema_code}, #{movie_code}, #{schedule_code}, #{cinemaroom_code})
 	</insert>
 	
 	<select id="selectAll" resultType="org.study.reservation.ReservationVO">
@@ -16,9 +17,9 @@
 	
 	<!-- 예매 내역 조회 -->
 	<select id="selectIdReserve" resultType="org.study.admin.DataVO">
-		select r.id, mv.name, c.cinema_name, s.cinema_room, m.movie_sub, s.start_time, s.schedule_date
-		from cinemainfo c, movie m, schedule s, reservation r, member mv
-		where r.cinema_code=c.cinema_code and r.movie_code=m.movie_code
+		select r.id, mv.name, c.cinema_name, cr.cinema_room, m.movie_sub, s.start_time, s.schedule_date
+		from cinemainfo c, movie m, schedule s, reservation r, member mv, cinemaroom cr
+		where r.cinema_code=c.cinema_code and r.movie_code=m.movie_code and r.cinemaroom_code=cr.cinemaroom_code
 		and r.schedule_code=s.schedule_code and r.id=mv.id and r.id = #{id};
 	</select>
 	

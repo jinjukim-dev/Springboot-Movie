@@ -15,7 +15,7 @@
 </style>
 <br/><br/>
 <div class="container">
-	<form:form  method="post" modelAttribute="cinemaVO"   id="cinemaRegist">
+	<form:form  method="post"  modelAttribute="cinemaVO"   id="cinemaRegist">
 		<br />
 		<h3 class="title-w3pvt mb-10" id="title">지점 등록 🏡</h3>
 		<br/><br/>

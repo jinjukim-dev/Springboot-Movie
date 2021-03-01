@@ -1,16 +1,16 @@
 package org.study.admin;
 
 public class CinemaRoomVO {
+	private int cinemaroom_code;
 	private int cinema_code;
 	private String cinema_room;
-	private int cinema_seat;
+	private int seat_qnt;
 	
-	
-	public int getCinema_seat() {
-		return cinema_seat;
+	public int getCinemaroom_code() {
+		return cinemaroom_code;
 	}
-	public void setCinema_seat(int cinema_seat) {
-		this.cinema_seat = cinema_seat;
+	public void setCinemaroom_code(int cinemaroom_code) {
+		this.cinemaroom_code = cinemaroom_code;
 	}
 	public int getCinema_code() {
 		return cinema_code;
@@ -24,5 +24,11 @@ public class CinemaRoomVO {
 	public void setCinema_room(String cinema_room) {
 		this.cinema_room = cinema_room;
 	}
-
+	public int getSeat_qnt() {
+		return seat_qnt;
+	}
+	public void setSeat_qnt(int seat_qnt) {
+		this.seat_qnt = seat_qnt;
+	}
+	
 }

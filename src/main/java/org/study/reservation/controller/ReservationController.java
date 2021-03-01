@@ -161,47 +161,47 @@ public class ReservationController {
 	}
 
 	/////////////////////////////////////////////////////////////
-	@GetMapping("reservePage02")
-	public String getReserveSeat(ReservationInfoVO reserveInfo, Model model, HttpServletRequest request)
-			throws Exception {
-		log.info("reserveSeat");
-
-		String schedule_code = request.getParameter("strTime");
-		String strDay = request.getParameter("strDay");
-
-		SimpleDateFormat fm = new SimpleDateFormat("yyyy-MM-dd");
-		Date reserveDay = fm.parse(strDay);
-
-		// schedule정보 //
-		ScheduleVO2 scheduleInfo = scheduleService.reserveSelectSchedule(schedule_code);
-
-		System.out.println("cinema_room : " + scheduleInfo.getCinema_room());
-		System.out.println("Page02 : reserveDay : " + strDay);
-
-		reserveInfo.setDay(reserveDay);
-		reserveInfo.setCinema_room(scheduleInfo.getCinema_room());
-		reserveInfo.setStart_time(scheduleInfo.getStart_time());
-		reserveInfo.setEnd_time(scheduleInfo.getEnd_time());
-		reserveInfo.setExtraSeat(scheduleInfo.getSeat_qnt());
-		reserveInfo.setSchedule_code(scheduleInfo.getSchedule_code());
-
-		String cinema_code = Integer.toString(reserveInfo.getCinema_code());
-
-		System.out.println("cinema_room검색 : " + cinema_code + reserveInfo.getCinema_name());
-		// cinemaRoom으로 전체좌석수
-		CinemaRoomVO2 cinemaRoomInfo = cinemaRoomService.selectCinemaRoomInfo(cinema_code,
-				reserveInfo.getCinema_room());
-
-		System.out.println("cinema_room전체좌석 : " + cinemaRoomInfo.getCinema_seat());
-
-		reserveInfo.setTotalSeat(cinemaRoomInfo.getCinema_seat());
-//		reserveInfo.setId();
-//		reserveInfo.setBirth();
-
-		model.addAttribute("reserveInfo", reserveInfo);
-		model.addAttribute("center", "reservation/reservePage02");
-		return "home";
-	}
+//	@GetMapping("reservePage02")
+//	public String getReserveSeat(ReservationInfoVO reserveInfo, Model model, HttpServletRequest request)
+//			throws Exception {
+//		log.info("reserveSeat");
+//
+//		String schedule_code = request.getParameter("strTime");
+//		String strDay = request.getParameter("strDay");
+//
+//		SimpleDateFormat fm = new SimpleDateFormat("yyyy-MM-dd");
+//		Date reserveDay = fm.parse(strDay);
+//
+//		// schedule정보 //
+//		ScheduleVO2 scheduleInfo = scheduleService.reserveSelectSchedule(schedule_code);
+//
+//		System.out.println("cinema_room : " + scheduleInfo.getCinema_room());
+//		System.out.println("Page02 : reserveDay : " + strDay);
+//
+//		reserveInfo.setDay(reserveDay);
+//		reserveInfo.setCinema_room(scheduleInfo.getCinema_room());
+//		reserveInfo.setStart_time(scheduleInfo.getStart_time());
+//		reserveInfo.setEnd_time(scheduleInfo.getEnd_time());
+//		reserveInfo.setExtraSeat(scheduleInfo.getSeat_qnt());
+//		reserveInfo.setSchedule_code(scheduleInfo.getSchedule_code());
+//
+//		String cinema_code = Integer.toString(reserveInfo.getCinema_code());
+//
+//		System.out.println("cinema_room검색 : " + cinema_code + reserveInfo.getCinema_name());
+//		// cinemaRoom으로 전체좌석수
+//		CinemaRoomVO2 cinemaRoomInfo = cinemaRoomService.selectCinemaRoomInfo(cinema_code,
+//				reserveInfo.getCinema_room());
+//
+//		System.out.println("cinema_room전체좌석 : " + cinemaRoomInfo.getCinema_seat());
+//
+//		reserveInfo.setTotalSeat(cinemaRoomInfo.getCinema_seat());
+////		reserveInfo.setId();
+////		reserveInfo.setBirth();
+//
+//		model.addAttribute("reserveInfo", reserveInfo);
+//		model.addAttribute("center", "reservation/reservePage02");
+//		return "home";
+//	}
 
 	@PostMapping("reservePage02")
 	public String postReserveSeat(ReservationInfoVO reserveInfo, Model model, HttpServletRequest request)

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.study.cinemaroom" >
+
+<insert id="insertCinemaroom" parameterType="org.study.admin.CinemaRoomVO" useGeneratedKeys="true" keyProperty="id">
+	insert into cinemaroom (cinemaroom_code, cinema_code, cinema_room, seat_qnt)
+	values (#{cinemaroom_code}, #{cinema_code}, #{cinema_room}, #{seat_qnt})
+</insert>
+
+<select id="selectAll" resultType="org.study.admin.CinemaRoomVO">
+	select * from cinemaroom
+</select>
+
+<select id="selectCode" resultType="org.study.admin.CinemaRoomVO">
+	select * from cinemaroom where cinema_code = #{cinema_code}
+</select>
+
+<delete id="deleCode" parameterType="org.study.admin.CinemaRoomVO">
+	delete from cinemaroom where cinemaroom_code = #{cinemaroom_code}
+</delete>
+
+</mapper>

@@ -5,10 +5,9 @@
 	<insert id="insert" parameterType="org.study.admin.ScheduleVO"
 		useGeneratedKeys="true" keyProperty="id">
 		insert into schedule
-		(schedule_code,cinema_code,cinema_room,start_time,end_time,seat_qnt,schedule_date,movie_code)
-		values (#{schedule_code}, #{cinema_code}, #{cinema_room},
-		#{start_time}, #{end_time}, #{seat_qnt},
-		#{schedule_date},#{movie_code})
+		(schedule_code, cinema_code, start_time, end_time, schedule_date, movie_code, cinemaroom_code)
+		values (#{schedule_code}, #{cinema_code}, #{start_time}, #{end_time},
+		#{schedule_date}, #{movie_code}, #{cinemaroom_code})
 	</insert>
 
 	<select id="selectByCode" resultType="org.study.admin.MovieVO">
@@ -70,10 +69,10 @@
 	
 	<!-- admin - 예매 관리 -->
 	<select id="selectData" resultType="org.study.admin.DataVO">
-		select distinct r.id "id", m.name "name", c.cinema_name "cinema_name", s.cinema_room "cinema_room", 
-		mo.movie_sub "movie_sub", s.schedule_date  "schedule_date",  s.start_time "start_time", r.seat_num "seat_num" 
-		from reservation r, member m, cinemainfo c, movie mo, schedule s
-		where r.id=m.id and r.cinema_code=c.cinema_code and
+		select distinct r.id "id", m.name "name", c.cinema_name "cinema_name", cr.cinema_room "cinema_room", 
+		mo.movie_sub "movie_sub", s.schedule_date  "schedule_date",  s.start_time "start_time", cr.seat_qnt "seat_num" 
+		from reservation r, member m, cinemainfo c, movie mo, schedule s, cinemaroom cr
+		where r.id=m.id and r.cinema_code=c.cinema_code and r.cinemaroom_code=cr.cinemaroom_code and
 	    r.movie_code=mo.movie_code and r.schedule_code=s.schedule_code;
 	</select>
 	

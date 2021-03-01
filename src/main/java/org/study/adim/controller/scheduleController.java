@@ -78,7 +78,6 @@ public class scheduleController {
 
 			List<CinemaVO> cinemaList = cinemaDAO.selectAll();
 			model.addAttribute("cinemaList", cinemaList);
-			log.info("회원가입 에러 qnt :" + scheuleVO.getSeat_qnt());
 			log.info("end_time:"+scheuleVO.getEnd_time()
 			 + " start_time:" + scheuleVO.getStart_time());
 			return "movie/movieScheduleRegist";

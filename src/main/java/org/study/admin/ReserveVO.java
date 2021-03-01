@@ -4,11 +4,9 @@ public class ReserveVO {
 	private int reservation_code;
 	private String id;
 	private int cinema_code;
-	private int cinema_name;
 	private int movie_code;
 	private int schedule_code;
-	private String seat_code;
-	
+	private int cinemaroom_code;
 	public int getReservation_code() {
 		return reservation_code;
 	}
@@ -27,12 +25,6 @@ public class ReserveVO {
 	public void setCinema_code(int cinema_code) {
 		this.cinema_code = cinema_code;
 	}
-	public int getCinema_name() {
-		return cinema_name;
-	}
-	public void setCinema_name(int cinema_name) {
-		this.cinema_name = cinema_name;
-	}
 	public int getMovie_code() {
 		return movie_code;
 	}
@@ -45,11 +37,11 @@ public class ReserveVO {
 	public void setSchedule_code(int schedule_code) {
 		this.schedule_code = schedule_code;
 	}
-	public String getSeat_code() {
-		return seat_code;
+	public int getCinemaroom_code() {
+		return cinemaroom_code;
 	}
-	public void setSeat_code(String seat_code) {
-		this.seat_code = seat_code;
+	public void setCinemaroom_code(int cinemaroom_code) {
+		this.cinemaroom_code = cinemaroom_code;
 	}
 
 }

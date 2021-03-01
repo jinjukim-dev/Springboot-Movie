@@ -21,9 +21,10 @@
 		<h3 class="title-w3pvt mb-10" id="title">상영관 등록🪑</h3>
 		<br/><br/>
 		<div class="form-group">
+			<form:hidden path="cinema_code" class="form-control" placeholder="지점 코드"/>
 			<form:input path="cinema_room" class="form-control" placeholder="상영관 ex)6관"/>
 			<br />
-			<form:input path="cinema_seat" class="form-control"  placeholder="좌석수" />
+			<form:input path="seat_qnt" class="form-control"  placeholder="좌석수" />
 			<br />
 			<br /> <br /> 
 			<input type="submit" class="btn btn-dark" value="등록" id="subBtn" />

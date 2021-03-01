@@ -15,12 +15,16 @@ public class CinemaRoomDAO {
 	private SqlSession sqlSession;
 	
 	public void insertRoom(CinemaRoomVO cinema) throws Exception  {
-		sqlSession.insert("org.study.cinema.insertRoom", cinema);
-		
+		sqlSession.insert("org.study.cinemaroom.insertCinemaroom", cinema);		
+	}
+	
+	public List<CinemaRoomVO> selectAllRoom() throws Exception{
+		List<CinemaRoomVO> results = sqlSession.selectList("org.study.cinemaroom.selectAll");
+		return results;
 	}
 	
 	public List<CinemaRoomVO> selectCode(int cinema_code) throws Exception  {
-		List<CinemaRoomVO> results = sqlSession.selectList("org.study.cinema.selectCinemaCode", cinema_code);
+		List<CinemaRoomVO> results = sqlSession.selectList("org.study.cinemaroom.selectCode", cinema_code);
 		return results;
 	}
 	
@@ -28,8 +32,11 @@ public class CinemaRoomDAO {
 		Map<String, String> param =new HashMap<String, String>();
 		param.put("cinema_code",cinema_code);
 		param.put("cinema_room",cinema_room);
-		sqlSession.delete("org.study.cinema.deleteCinemaRoom", param);
+		sqlSession.delete("org.study.cinema.deleteCinemaRoom", param);	
+	}
 	
+	public void deleCode(int cinemaroom_code) throws Exception{
+		sqlSession.delete("org.study.cinemaroom.deleCode", cinemaroom_code);
 	}
 
 }

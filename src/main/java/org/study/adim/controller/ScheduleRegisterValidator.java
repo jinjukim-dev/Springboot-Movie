@@ -37,9 +37,9 @@ public class ScheduleRegisterValidator implements Validator{
 		ValidationUtils.rejectIfEmpty(errors, "end_time", "required");
 		ValidationUtils.rejectIfEmpty(errors, "schedule_date", "required");
 		*/
-		if(scheduleVO.getSeat_qnt() == 0) {
-			errors.rejectValue("seat_qnt", "required");
-		}
+//		if(scheduleVO.getSeat_qnt() == 0) {
+//			errors.rejectValue("seat_qnt", "required");
+//		}
 		
 		if(scheduleVO.getStart_time() == null) {
 			//if(errors.getFieldError("start_time") == null) {
