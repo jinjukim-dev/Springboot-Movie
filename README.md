@@ -7,7 +7,7 @@
 
 ### 개발환경
 - 개발 프로그램 : springboot, eclipse
-- DMBS : Mysql
+- DBMS : Mysql
 - CSS : bootstrap4, w3layouts
 
 ### 기능
