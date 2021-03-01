@@ -26,6 +26,9 @@
 - bootstap4 이용해서 화면 개선
 - DB에 cinemaroom table 추가해서 reservation, schedule table 수정
 
+### 데이터베이스 설계서 - ERD
+<img src = "https://user-images.githubusercontent.com/62095517/109464347-e251b780-7aa9-11eb-9a38-e0fe3868a9be.png" height="400" width="700">
+
 ### UI
 #### 사용자
 -메인화면
