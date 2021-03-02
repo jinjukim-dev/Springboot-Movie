@@ -46,7 +46,7 @@
 - 예매 기능
 <div>
 <img src = "https://user-images.githubusercontent.com/62095517/109459122-82571300-7aa1-11eb-911f-acf19547ea46.png" width="45%">
-<img src = "https://user-images.githubusercontent.com/62095517/109459136-8b47e480-7aa1-11eb-8852-24ee4e4c7cc3.png" width="45%">
+<img src = "https://user-images.githubusercontent.com/62095517/109621689-a6d4ed00-7b7e-11eb-97f8-54dcd60db3d2.png" width="45%">
 </div>
 <br/>
 
