@@ -7,7 +7,7 @@
 
 ### 개발환경
 - 개발 프로그램 : springboot, eclipse
-- DMBS : Mysql
+- DBMS : Mysql
 - CSS : bootstrap4, w3layouts
 
 ### 기능
@@ -26,6 +26,9 @@
 - bootstap4 이용해서 화면 개선
 - DB에 cinemaroom table 추가해서 reservation, schedule table 수정
 
+### 데이터베이스 설계서 - ERD
+<img src = "https://user-images.githubusercontent.com/62095517/109464347-e251b780-7aa9-11eb-9a38-e0fe3868a9be.png" height="400" width="700">
+
 ### UI
 #### 사용자
 -메인화면
@@ -43,7 +46,7 @@
 - 예매 기능
 <div>
 <img src = "https://user-images.githubusercontent.com/62095517/109459122-82571300-7aa1-11eb-911f-acf19547ea46.png" width="45%">
-<img src = "https://user-images.githubusercontent.com/62095517/109459136-8b47e480-7aa1-11eb-8852-24ee4e4c7cc3.png" width="45%">
+<img src = "https://user-images.githubusercontent.com/62095517/109621689-a6d4ed00-7b7e-11eb-97f8-54dcd60db3d2.png" width="45%">
 </div>
 <br/>
 
