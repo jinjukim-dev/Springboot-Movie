@@ -18,7 +18,7 @@
 <div class="container">
 	<form:form  method="post" modelAttribute="movieVO"   id="movieRegist">
 		<br />
-		<h3 class="title-w3pvt mb-10" id="title">영화 등록🎬</h3>
+		<h3 class="title-w3pvt mb-10" id="title" style="font-size: 35px;">영화 등록🎬</h3>
 		<br/><br/>
 		<div class="form-group">
 			<form:input path="movie_sub" class="form-control" placeholder="영화 제목"/>

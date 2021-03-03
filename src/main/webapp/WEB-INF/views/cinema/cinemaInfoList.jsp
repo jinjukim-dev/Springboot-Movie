@@ -3,7 +3,19 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <title>상영관 리스트</title>
 
-<div class="container">
+<style type="text/css">
+#cinemaroomList {
+	margin: 0 auto;
+	width: 600px;
+}
+
+#subBtn {
+	margin: 0 auto;
+	width: 100px;
+}
+</style>
+
+<div class="container"  id = "cinemaroomList">
 	<br /><br />
 	<h3 style="font-size: 35px; font-weight: bold;">상영관 리스트 </h3>
 	<br /><br />

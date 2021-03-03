@@ -16,16 +16,16 @@ public class MovieDAO {
 	private SqlSession sqlSession;
 	
 	//예매된 영화리스트 출력
-		public List<MovieVO> reserveSelectMovie() throws Exception{
-			List<MovieVO> listMovie = sqlSession.selectList("org.study.movie.reserveSelectMovie");
-			return listMovie;
-		}
+	public List<MovieVO> reserveSelectMovie() throws Exception{
+		List<MovieVO> listMovie = sqlSession.selectList("org.study.movie.reserveSelectMovie");
+		return listMovie;
+	}
 		
-		//무비 코드로 영화 정보 가져오기
-		public MovieVO selectMovieInfo(String movie_code) {
-			MovieVO movieInfo = sqlSession.selectOne("org.study.movie.selectMovieInfo", movie_code);
-			return movieInfo;
-		}
+	//무비 코드로 영화 정보 가져오기
+	public MovieVO selectMovieInfo(int movie_code) {
+		MovieVO movieInfo = sqlSession.selectOne("org.study.movie.selectMovieInfo", movie_code);
+		return movieInfo;
+	}
 
 	public MemberVO selectByEmail(String email) throws Exception  {
 		List<MemberVO> results = sqlSession.selectList("org.study.member.selectByEmail", email);
@@ -56,19 +56,5 @@ public class MovieDAO {
 		sqlSession.delete("org.study.movie.deleteMovie", movie_code);
 	
 	}
-
-//	public void update(MemberVO member) throws Exception  {
-//		sqlSession.update("org.study.member.update", member);
-//	}
-//
-//	public List<MemberVO> selectAll()  throws Exception {
-//		List<MemberVO> results = sqlSession.selectList("org.study.member.selectAll"); 
-//		return results;
-//	}
-//
-//	public int count() throws Exception  {
-//		Integer count = sqlSession.selectOne("org.study.member.count", Integer.class);
-//		return count;
-//	}
 
 }

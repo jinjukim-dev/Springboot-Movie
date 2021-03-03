@@ -29,25 +29,19 @@ import org.study.admin.MovieDAO;
 import org.study.admin.MovieVO;
 import org.study.admin.ReserveDAO;
 import org.study.admin.ReserveVO;
-
 import org.springframework.web.bind.annotation.RequestParam;
 
-import org.study.cinema.CinemaService;
-import org.study.cinema.CinemaVO2;
-import org.study.cinemaRoom.CinemaRoomService;
-import org.study.cinemaRoom.CinemaRoomVO2;
 import org.study.member.AuthInfo;
 import org.study.member.AuthService;
 import org.study.member.MemberDAO;
 import org.study.member.MemberVO;
 import org.study.member.controller.LoginCommand;
-import org.study.movie.MovieService;
 import org.study.reservation.ReservationDAO;
 import org.study.reservation.ReservationInfoVO;
 import org.study.reservation.ReservationService;
 import org.study.reservation.ReservationVO;
 import org.study.schedule.ScheduleService;
-import org.study.schedule.ScheduleVO2;
+import org.study.admin.ScheduleVO;
 
 @Controller
 @RequestMapping("reservation")
@@ -55,13 +49,8 @@ public class ReservationController {
 	Logger log = LoggerFactory.getLogger(ReservationController.class);
 
 	@Autowired
-	MovieService movieService;
-	@Autowired
-	CinemaService cinemaService;
-	@Autowired
 	ScheduleService scheduleService;
-	@Autowired
-	CinemaRoomService cinemaRoomService;
+	
 	@Autowired
 	ReservationService reservationService;
 	@Autowired
@@ -87,14 +76,14 @@ public class ReservationController {
 	public String getReserveMoviePage(Model model) throws Exception {
 		
 		log.info("reserveList");
-		List<MovieVO> movieList = movieService.reserveSelectMovie();
-		List<CinemaVO2> cinemaList = cinemaService.reserveSelectCinema();
-		List<ScheduleVO2> scheduleList = scheduleService.reserveSelectDay(); // 날짜 리스트
-		List<ScheduleVO2> schedule_dateList = scheduleService.selectSchedule_date();//스케줄 날짜 리스트
+		//List<MovieVO> movieList = movieService.reserveSelectMovie();
+		//List<CinemaVO2> cinemaList = cinemaService.reserveSelectCinema();
+		List<ScheduleVO> scheduleList = scheduleService.reserveSelectDay(); // 날짜 리스트
+		List<ScheduleVO> schedule_dateList = scheduleService.selectSchedule_date();//스케줄 날짜 리스트
 		//////////////////////////////////////////////////////////////////
 		// List<ScheduleVO> timeList = scheduleService.reserveSelectTime(thisDay);
-		model.addAttribute("movieList", movieList);
-		model.addAttribute("cinemaList", cinemaList);
+		//model.addAttribute("movieList", movieList);
+		//model.addAttribute("cinemaList", cinemaList);
 		model.addAttribute("scheduleList", scheduleList);
 		model.addAttribute("schedule_dateList", schedule_dateList);
 
@@ -112,30 +101,30 @@ public class ReservationController {
 		SimpleDateFormat fm = new SimpleDateFormat("yyyy-MM-dd");
 		Date reserveDay = fm.parse(day);
 
-		List<MovieVO> movieList = movieService.reserveSelectMovie();
-		List<CinemaVO2> cinemaList = cinemaService.reserveSelectCinema();
-		List<ScheduleVO2> scheduleList = scheduleService.reserveSelectDay(); // 스케줄 리스트 전부
-		List<ScheduleVO2> schedule_dateList = scheduleService.selectSchedule_date();//스케줄 날짜 리스트
+		//List<MovieVO> movieList = movieService.reserveSelectMovie();
+		//List<CinemaVO2> cinemaList = cinemaService.reserveSelectCinema();
+		List<ScheduleVO> scheduleList = scheduleService.reserveSelectDay(); // 스케줄 리스트 전부
+		List<ScheduleVO> schedule_dateList = scheduleService.selectSchedule_date();//스케줄 날짜 리스트
 
-		model.addAttribute("movieList", movieList);
-		model.addAttribute("cinemaList", cinemaList);
+		//model.addAttribute("movieList", movieList);
+		//model.addAttribute("cinemaList", cinemaList);
 		model.addAttribute("scheduleList", scheduleList);
 		model.addAttribute("schedule_dateList", schedule_dateList);
 
 		System.out.println("영화정보 : " + movie_code + ", " + cinema_code + ", " + reserveDay);
 
-		List<ScheduleVO2> timeList = scheduleService.reserveSelectTime(movie_code, cinema_code, day);
+		List<ScheduleVO> timeList = scheduleService.reserveSelectTime(movie_code, cinema_code, day);
 
 		/* 영화정보 */
-		MovieVO movieInfo = movieService.selectMovieInfo(movie_code);// 선택된movie
-		CinemaVO2 cinemaInfo = cinemaService.selectCinemaInfo(cinema_code);// 선택된cinema
+		//MovieVO movieInfo = movieService.selectMovieInfo(movie_code);// 선택된movie
+		//CinemaVO2 cinemaInfo = cinemaService.selectCinemaInfo(cinema_code);// 선택된cinema
 
 		// reserveInfoVO에 넣기
 		ReservationInfoVO reserveInfo = new ReservationInfoVO();
-		reserveInfo.setMovie_code(movieInfo.getMovie_code());
-		reserveInfo.setMovie_sub(movieInfo.getMovie_sub());
-		reserveInfo.setCinema_code(cinemaInfo.getCinema_code());
-		reserveInfo.setCinema_name(cinemaInfo.getCinema_name());
+		//reserveInfo.setMovie_code(movieInfo.getMovie_code());
+		//reserveInfo.setMovie_sub(movieInfo.getMovie_sub());
+		//reserveInfo.setCinema_code(cinemaInfo.getCinema_code());
+		//reserveInfo.setCinema_name(cinemaInfo.getCinema_name());
 		reserveInfo.setDay(reserveDay);
 
 		System.out.println("Page01 : reserveDay : " + reserveInfo.getDay());

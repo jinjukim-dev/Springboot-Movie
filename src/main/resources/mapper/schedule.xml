@@ -2,8 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.study.schedule">
 
-	<insert id="insert" parameterType="org.study.admin.ScheduleVO"
-		useGeneratedKeys="true" keyProperty="id">
+	<insert id="insert" parameterType="org.study.admin.ScheduleVO" useGeneratedKeys="true" keyProperty="id">
 		insert into schedule
 		(schedule_code, cinema_code, start_time, end_time, schedule_date, movie_code, cinemaroom_code)
 		values (#{schedule_code}, #{cinema_code}, #{start_time}, #{end_time},
@@ -17,58 +16,56 @@
 	<select id="selectCinema" resultType="org.study.admin.CinemaVO">select * from cinemainfo
 	</select>
 
-	<select id="selectRoom"
-		resultType="org.study.admin.CinemaRoomVO">select * from cinemacodeinfo where
-		cinema_code=#{cinema_code}
-	</select>
+<!-- 	<select id="selectRoom" resultType="org.study.admin.CinemaRoomVO">
+		select * from cinemacodeinfo where cinema_code=#{cinema_code}
+	</select> -->
 
-	<select id="reserveSelectSchedule"
-		resultType="org.study.schedule.ScheduleVO2">
-		select * from schedule where schedule_code =
-		#{schedule_code}
+	<select id="reserveSelectSchedule" resultType="org.study.admin.ScheduleVO">
+		select * from schedule where schedule_code = #{schedule_code}
 	</select>
 	
-	<select id="selectSchedule_date" resultType="org.study.schedule.ScheduleVO2">
+	<select id="selectSchedule_date" resultType="org.study.admin.ScheduleVO">
 		select distinct(schedule_date) from schedule
-	</select>
-
-	<!-- <update id="update" parameterType="org.study.member.MemberVO"> update 
-		member set NAME = #{name}, PASSWORD = #{password} where EMAIL = #{email} 
-		</update> -->
-
-	<!-- reserveSelectMovie -->
-	<select id="reserveSelectMovie"
-		resultType="org.study.movie.MovieVO2">
-		select * from movie
 	</select>
 
 	<select id="selectMovie" resultType="org.study.admin.MovieVO">
 		select * from movie
 	</select>
 
-	<select id="reserveSelectDay"
-		resultType="org.study.schedule.ScheduleVO2">
-		select * from schedule order by schedule_date
+	<select id="reserveSelectDay" resultType="org.study.admin.ScheduleVO">
+		select * from schedule order by schedule_date;
 	</select>
 
-	<select id="reserveSelectTime" parameterType="java.util.Map"
-		resultType="org.study.schedule.ScheduleVO2">
+	<select id="reserveSelectTime" parameterType="java.util.Map" resultType="org.study.admin.ScheduleVO">
 		select * from schedule where schedule_date = #{day} and
 		cinema_code = #{cinema_code} and movie_code = #{movie_code};
 	</select>
 
-	<select id="selectScedule"
-		resultType="org.study.admin.ScheduleVO">
-		select * from schedule where movie_code = #{movie_code}
+	<!-- 영화 스케줄 등록 화면  -->
+	<select id="selectSchedule" resultType="org.study.admin.MovieScheduleVO">
+		select distinct c.cinema_name "cinema_name", cr.cinema_room "cinema_room", 
+		s.schedule_date  "schedule_date",  s.start_time "start_time", s.end_time "end_time", cr.seat_qnt "seat_num" 
+		from reservation r, member m, cinemainfo c, movie mo, schedule s, cinemaroom cr
+		where r.id=m.id and r.cinema_code=c.cinema_code and r.cinemaroom_code=cr.cinemaroom_code and
+	    r.movie_code=mo.movie_code and r.schedule_code=s.schedule_code and mo.movie_code = #{movie_code};
 	</select>
-
-	<delete id="deleteSchedule"
-		parameterType="org.study.admin.ScheduleVO">
+	
+	<!-- 영화 스케줄 목록 -->
+	<select id="selectMovieSchedule" resultType="org.study.admin.MovieScheduleVO">
+		select distinct c.cinema_name "cinema_name", cr.cinema_room "cinema_room", s.start_time "start_time", s.end_time "end_time", 
+		cr.seat_qnt "seat_num", s.schedule_date "schedule_date", mo.movie_code "movie_code", mo.movie_sub "movie_sub"
+		from reservation r, member m, cinemainfo c, movie mo, schedule s, cinemaroom cr
+		where s.cinema_code=c.cinema_code and s.movie_code=mo.movie_code and s.cinemaroom_code=cr.cinemaroom_code
+		and s.movie_code = #{movie_code};
+	</select>
+	
+	
+	<delete id="deleteSchedule" parameterType="org.study.admin.ScheduleVO">
 		delete from schedule where schedule_code=#{schedule_code};
 	</delete>
 	
 	<!-- admin - 예매 관리 -->
-	<select id="selectData" resultType="org.study.admin.DataVO">
+	<select id="selectData" resultType="org.study.admin.ScheduleVO">
 		select distinct r.id "id", m.name "name", c.cinema_name "cinema_name", cr.cinema_room "cinema_room", 
 		mo.movie_sub "movie_sub", s.schedule_date  "schedule_date",  s.start_time "start_time", cr.seat_qnt "seat_num" 
 		from reservation r, member m, cinemainfo c, movie mo, schedule s, cinemaroom cr
@@ -76,11 +73,11 @@
 	    r.movie_code=mo.movie_code and r.schedule_code=s.schedule_code;
 	</select>
 	
-	<select id="selectReserveId"  resultType="org.study.admin.DataVO">
-	select distinct r.id "id", m.name "name", c.cinema_name "cinema_name", r.cinema_room "cinema_room", mo.movie_sub "movie_sub", s.schedule_date  "schedule_date", s.start_time "start_time", r.seat_num "seat_num" 
-	from reservation r, member m, cinemainfo c, cinemacodeinfo d, movie mo, schedule s
-	where r.id=m.id and r.cinema_code=c.cinema_code and r.cinema_room=d.cinema_room and r.movie_code=mo.movie_code and r.schedule_code=s.schedule_code and r.id=#{id};
-	</select>
+<!-- 	<select id="selectReserveId"  resultType="org.study.admin.DataVO">
+		select distinct r.id "id", m.name "name", c.cinema_name "cinema_name", r.cinema_room "cinema_room", mo.movie_sub "movie_sub", s.schedule_date  "schedule_date", s.start_time "start_time", r.seat_num "seat_num" 
+		from reservation r, member m, cinemainfo c, cinemacodeinfo d, movie mo, schedule s
+		where r.id=m.id and r.cinema_code=c.cinema_code and r.cinema_room=d.cinema_room and r.movie_code=mo.movie_code and r.schedule_code=s.schedule_code and r.id=#{id};
+	</select> -->
 	
 
 </mapper>

@@ -5,7 +5,7 @@
 
 <div class="container">
 	<br /><br />
-	<h3 style="font-size: 35px; font-weight: bold;">예매 리스트📅</h3>
+	<h3 class="title-w3pvt mb-10" id="title" style="font-size: 35px;">예매 리스트📅</h3>
 	<br /><br />
 	<table class="table">
 		<thead>

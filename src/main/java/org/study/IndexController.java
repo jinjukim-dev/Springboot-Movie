@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.study.admin.MovieDAO;
 import org.study.admin.MovieVO;
-import org.study.movie.MovieService;
 import org.study.reservation.ReservationService;
 import org.study.reservation.controller.ReservationController;
 
@@ -25,7 +24,7 @@ public class IndexController {
 	Logger log = LoggerFactory.getLogger(IndexController.class);
 	
 	@Autowired
-	private MovieService movieService;
+	private MovieDAO movieDAO;
 	
 	@Autowired
 	private ReservationService reservationService;
@@ -35,7 +34,7 @@ public class IndexController {
 		
 		/* movie Rank 부분 */
 		List<Object> countList = reservationService.selectCount(); // 영화코드, 예약된 영화 count 값 	
-		List<MovieVO> movieList = movieService.selectAll(); // 모든 영화 정보 가져오기
+		List<MovieVO> movieList = movieDAO.selectAll(); // 모든 영화 정보 가져오기
 		
 		for(int i=0; i<countList.size(); i++) {
 			Map<String, Object> map = (Map<String, Object>) countList.get(i);

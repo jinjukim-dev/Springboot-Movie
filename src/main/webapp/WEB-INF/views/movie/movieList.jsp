@@ -31,9 +31,24 @@
 				<td>${list.movie_open}</td>
 				<td>${list.movie_age}</td>
 				<td>${list.movie_time}</td>
-				<td><input type="submit" class="btn btn-secondary" value="스케줄 관리"  id="subBtn" /></td>
-				<td><input type="submit" class="btn btn-primary" value="스케줄 등록"  id="subBtn" /></td>
-				<td><input type="submit" class="btn btn-danger" value="삭제"  id="subBtn" /></td>			
+				<td>
+				<form:form method="post" action="scheduleList" modelAttribute="MovieVO">
+					<input type="hidden" name="movie_code"  value="${list.movie_code}">
+					<input type="submit" class="btn btn-secondary" value="스케줄 목록 " id="subBtn" />
+				</form:form>
+				</td>
+				<td>
+				<form:form method="post" action="scheduleRegist" modelAttribute="MovieVO">
+					<input type="hidden" name="movie_code"  value="${list.movie_code}">
+					<input type="submit" class="btn btn-primary" value="스케줄 등록"  id="subBtn" />
+				</form:form>
+				</td>
+				<td>
+				<form:form method="post" action="deleteMovie" modelAttribute="MovieVO">
+					<input type="hidden" name="movie_code" value="${list.movie_code}"/>
+					<input type="submit" class="btn btn-danger" value="삭제"  id="subBtn" />
+				</form:form>
+				</td>			
 			</tr>
 		</c:forEach>
 		</form>

@@ -15,8 +15,16 @@
 	select * from cinemaroom where cinema_code = #{cinema_code}
 </select>
 
+<select id="selectCodeRoom" resultType="org.study.admin.CinemaRoomVO">
+	SELECT * FROM cinemaroom where cinema_code = #{cinema_code} and cinema_room = #{cinema_room}
+</select>
+
 <delete id="deleCode" parameterType="org.study.admin.CinemaRoomVO">
 	delete from cinemaroom where cinemaroom_code = #{cinemaroom_code}
+</delete>
+
+<delete id="deleCineCode" parameterType="org.study.admin.CinemaRoomVO">
+	delete from cinemaroom where cinema_code = #{cinema_code}
 </delete>
 
 </mapper>

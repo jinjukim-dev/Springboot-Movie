@@ -6,10 +6,11 @@
  	</insert>
  	
  	<!-- 최근등록된 영화부터 보여주기 -->
- 	<select id="reserveSelectMovie" resultType="org.study.movie.MovieVO2">
+ 	<select id="reserveSelectMovie" resultType="org.study.admin.MovieVO">
  		select * from movie
  	</select>
- 	<select id="selectMovieInfo" resultType="org.study.movie.MovieVO2">
+ 	
+ 	<select id="selectMovieInfo" resultType="org.study.admin.MovieVO">
  		select * from movie where movie_code = #{movie_code}
  	</select>
  	

@@ -34,7 +34,7 @@
 	</select>
 
 	<!-- 좌석수 update -->
-	<update id="updateSeat_num" parameterType="org.study.schedule.ScheduleVO2">
+	<update id="updateSeat_num" parameterType="org.study.admin.ScheduleVO">
 		update schedule set seat_qnt = seat_qnt - 1 where schedule_code = #{schedule_code}
 	</update>
 

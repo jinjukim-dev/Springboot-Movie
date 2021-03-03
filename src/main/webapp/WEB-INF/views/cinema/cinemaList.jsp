@@ -37,7 +37,12 @@
 					<input type="submit" class="btn btn-dark" value="상영관 리스트 " id="subBtn" />
 				</form:form>
 				</td>
-				<td><input type="submit" class="btn btn-danger" value="지점삭제"  id="subBtn" /></td>			
+				<td>
+				<form:form method="post" action="cinemaInfoDelete" modelAttribute="cinemaVO">
+					<input type="hidden" name="cinema_code" value="${list.cinema_code}"/>
+					<input type="submit" class="btn btn-danger" value="지점삭제"  id="subBtn" />
+				</form:form>
+				</td>			
 			</tr>
 		</c:forEach>
 		</form>

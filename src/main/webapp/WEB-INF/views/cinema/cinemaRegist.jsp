@@ -17,7 +17,7 @@
 <div class="container">
 	<form:form  method="post"  modelAttribute="cinemaVO"   id="cinemaRegist">
 		<br />
-		<h3 class="title-w3pvt mb-10" id="title">지점 등록 🏡</h3>
+		<h3 class="title-w3pvt mb-10" id="title" style="font-size: 35px;">지점 등록 🏡</h3>
 		<br/><br/>
 		<div class="form-group">
 			<form:hidden path="cinema_code" class="form-control" placeholder="지점 코드"/>

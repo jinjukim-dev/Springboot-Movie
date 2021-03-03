@@ -46,7 +46,7 @@ public class cinemaController {
 		
 		return "redirect:http://localhost:8080/springteam04/cinema/cinemaList";
 	}
-	/////////////////////////
+	
 	/* 상영관 등록 메뉴*/
 	/* 지점 리스트 보여주기 */
 	@GetMapping("cinemaList")
@@ -64,7 +64,7 @@ public class cinemaController {
 		int cinema_code=Integer.parseInt(code);
 		log.info("cinema_code : "+cinema_code);
 		
-		CinemaVO list =cinemaDAO.selectByCode(cinema_code);
+		CinemaVO list = cinemaDAO.selectByCode(cinema_code);
 	    model.addAttribute("cinemaVO", list);
 	    model.addAttribute("a_center", "cinema/cinemaInfoRegist");
 		return "a_home";
@@ -103,20 +103,18 @@ public class cinemaController {
 		return "a_home";
 	}
 	
-	/*지점 삭제   구현해야함*/
+	/*지점 삭제*/
 	@PostMapping("cinemaInfoDelete")
 	public String cinemaInfoDelete(CinemaRoomVO cinemaRoomVO, Model model, HttpServletRequest request) throws Exception {
-		String code=request.getParameter("code");
+		String code=request.getParameter("cinema_code");
 		int cinema_code=Integer.parseInt(code);
-	
 		CinemaVO cinemaVO = new CinemaVO();
-	    cinemaDAO.delete(cinema_code);
-	    model.addAttribute("cinemaVO", cinemaVO);
+		
+		cinemaDAO.delete(cinema_code); // 지점 삭제
+		cinemaRoomDAO.deleCineCode(cinema_code); // 지점에 있는 상영관 삭제
 	    
-	    List<CinemaVO> cinemaList = cinemaDAO.selectAll();
-		model.addAttribute("cinemaList", cinemaList);
-	
-		return "movie/cinemaList";
+	    model.addAttribute("cinemaVO", cinemaVO);
+	    return "redirect:cinemaList";
 	}
 
 }

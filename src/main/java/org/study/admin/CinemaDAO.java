@@ -21,6 +21,11 @@ public class CinemaDAO {
 		return results.isEmpty() ? null : results.get(0);
 	}
 	
+	public CinemaVO selectByName(String cinema_name) throws Exception  {
+		List<CinemaVO> results = sqlSession.selectList("org.study.cinema.selectByName", cinema_name);
+		return results.isEmpty() ? null : results.get(0);
+	}
+	
 	public CinemaVO selectByCode1(int cinema_code) throws Exception  {
 		CinemaVO result = sqlSession.selectOne("org.study.cinema.selectByCode", cinema_code);
 		return result;
@@ -53,8 +58,7 @@ public class CinemaDAO {
 	public int count() throws Exception  {
 		Integer count = sqlSession.selectOne("org.study.member.count", Integer.class);
 		return count;
-		
-		
+			
 	}
 	
 	public CinemaRoomVO selectCode(int cinema_code) throws Exception  {

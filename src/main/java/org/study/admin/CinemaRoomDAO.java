@@ -23,20 +23,25 @@ public class CinemaRoomDAO {
 		return results;
 	}
 	
+	public List<CinemaRoomVO> selectCodeRoom(String cinema_code, String cinema_room) throws Exception  {
+		Map<String, String> paramMap = new HashMap<String, String>();
+		paramMap.put("cinema_code", cinema_code);
+		paramMap.put("cinema_room", cinema_room);
+		List<CinemaRoomVO> results = sqlSession.selectList("org.study.cinemaroom.selectCodeRoom", paramMap);
+		return results;
+	}
+	
 	public List<CinemaRoomVO> selectCode(int cinema_code) throws Exception  {
 		List<CinemaRoomVO> results = sqlSession.selectList("org.study.cinemaroom.selectCode", cinema_code);
 		return results;
 	}
 	
-	public void delete(String cinema_code,String cinema_room) throws Exception  {
-		Map<String, String> param =new HashMap<String, String>();
-		param.put("cinema_code",cinema_code);
-		param.put("cinema_room",cinema_room);
-		sqlSession.delete("org.study.cinema.deleteCinemaRoom", param);	
-	}
-	
 	public void deleCode(int cinemaroom_code) throws Exception{
 		sqlSession.delete("org.study.cinemaroom.deleCode", cinemaroom_code);
+	}
+	
+	public void deleCineCode(int cinema_code) throws Exception{
+		sqlSession.delete("org.study.cinemaroom.deleCineCode", cinema_code);
 	}
 
 }
