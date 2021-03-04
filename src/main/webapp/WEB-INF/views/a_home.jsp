@@ -8,4 +8,4 @@
    <jsp:include page="${a_center}.jsp"/>
     
     <!-- //bottom 부분 -->
-    <%@ include file="a_bottom.jsp" %>
+    <%@ include file="bottom.jsp" %>

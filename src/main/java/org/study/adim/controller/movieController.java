@@ -19,6 +19,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.study.admin.CinemaDAO;
 import org.study.admin.CinemaRoomDAO;
 import org.study.admin.CinemaRoomVO;
@@ -87,6 +88,8 @@ public class movieController {
 	@PostMapping("scheduleList")
 	public String scheduleList(MovieVO movieVO, Model model,HttpServletRequest request) throws Exception {
 		int movie_code = movieVO.getMovie_code();	
+		MovieVO movie = movieDAO.selectMovieInfo(movie_code);
+		model.addAttribute("movie_sub", movie.getMovie_sub()); //영화제목 보내기
 		
 		List<ScheduleVO>  scheduleList = movieScheduleDAO.selectMovieSchedule(movie_code);
 		model.addAttribute("scheduleList", scheduleList);
@@ -99,10 +102,9 @@ public class movieController {
 	@PostMapping("scheduleRegist")
 	public String scheduleRegist(MovieVO movieVO, Model model, HttpServletRequest request) throws Exception {
 		int movie_code = movieVO.getMovie_code();
-		System.out.println("shceduleRegitst() movie_code  : "+movie_code);
-			
-		//List<ScheduleVO>  scheduleList = movieScheduleDAO.selectSchedule(movie_code);
-		//model.addAttribute("scheduleList", scheduleList);
+		
+		MovieVO movie = movieDAO.selectMovieInfo(movie_code);
+		model.addAttribute("movie_sub", movie.getMovie_sub()); //영화제목 보내기
 		
 		List<CinemaVO> cinemaList = cinemaDAO.selectAll(); // 지점 정보 보내기
 		model.addAttribute("cinemaList", cinemaList);
@@ -114,7 +116,7 @@ public class movieController {
 		return "a_home";
 	}
 	
-	/* admin - 영화 스케줄 등록  왜 모든 관이 다들어가는지 에러 !!!!*/
+	/* admin - 영화 스케줄 등록 */
 	@PostMapping("MoviescheduleRegist")
 	public String moviescheduleRegist(MovieScheduleVO movieScheduleVO, Model model) throws Exception {
 		
@@ -148,14 +150,24 @@ public class movieController {
 		// 스케줄 데이터 insert
 		scheduleDAO.insert(scheduleVO);
 		
-		model.addAttribute("a_center", "movie/scheduleList");
-		return "a_home";
+//		model.addAttribute("a_center", "movie/scheduleList");
+//		return "a_home";
+		return "redirect:movieList";
 	}
 	
-	// 스케줄 삭제
+	/* admin - 스케줄 삭제 */
+	@PostMapping("deleteSchedule")
+	public String cinemaRoomDelete(ScheduleVO scheduleVO, Model model, HttpServletRequest request) throws Exception {
+		int schedule_code = scheduleVO.getSchedule_code();
+		System.out.println("deleteSchedule.schedule_code : "+schedule_code);
+		
+		ScheduleVO schedule = new ScheduleVO();
+		scheduleDAO.delete(schedule_code);
+		model.addAttribute("shedule", schedule);
+		return "redirect:movieList";
+	}
 	
-	
-	/* admin - 영화삭제*/
+	/* admin - 영화삭제 */
 	@PostMapping("deleteMovie")
 	public String cinemaInfoDelete(Model model, HttpServletRequest request) throws Exception {
 		String code=request.getParameter("movie_code");

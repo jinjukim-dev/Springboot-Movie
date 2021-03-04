@@ -52,7 +52,7 @@
 	
 	<!-- 영화 스케줄 목록 -->
 	<select id="selectMovieSchedule" resultType="org.study.admin.MovieScheduleVO">
-		select distinct c.cinema_name "cinema_name", cr.cinema_room "cinema_room", s.start_time "start_time", s.end_time "end_time", 
+		select distinct s.schedule_code "schedule_code", c.cinema_name "cinema_name", cr.cinema_room "cinema_room", s.start_time "start_time", s.end_time "end_time", 
 		cr.seat_qnt "seat_num", s.schedule_date "schedule_date", mo.movie_code "movie_code", mo.movie_sub "movie_sub"
 		from reservation r, member m, cinemainfo c, movie mo, schedule s, cinemaroom cr
 		where s.cinema_code=c.cinema_code and s.movie_code=mo.movie_code and s.cinemaroom_code=cr.cinemaroom_code

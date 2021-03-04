@@ -6,6 +6,7 @@ import java.time.LocalTime;
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class MovieScheduleVO {
+	private int schedule_code;
 	private String cinema_name;
 	private String cinema_room;
 	@DateTimeFormat(pattern="yyyy-MM-dd")
@@ -16,6 +17,12 @@ public class MovieScheduleVO {
 	private LocalTime end_time;
 	private int seat_num;
 	private int movie_code;
+	public int getSchedule_code() {
+		return schedule_code;
+	}
+	public void setSchedule_code(int schedule_code) {
+		this.schedule_code = schedule_code;
+	}
 	public String getCinema_name() {
 		return cinema_name;
 	}
@@ -58,5 +65,5 @@ public class MovieScheduleVO {
 	public void setMovie_code(int movie_code) {
 		this.movie_code = movie_code;
 	}
-	
+
 }

@@ -4,7 +4,7 @@
 		<div class="row">
 			<div class="col-lg-6 copy-w3pvt">
 				<p class="copy-right-grids text-li text-left my-sm-4 my-4">
-					© 2019 MovieBOX . All Rights Reserved | Design by <a href="http://w3layouts.com/"> W3layouts </a>
+					© 2021 MovieBOX . All Rights Reserved | Design by <a href="http://w3layouts.com/"> W3layouts </a>
 				</p>
 			</div>
 			<div class="col-lg-5 w3layouts-footer text-right">

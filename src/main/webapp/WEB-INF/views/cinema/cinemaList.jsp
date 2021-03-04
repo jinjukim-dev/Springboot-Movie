@@ -26,15 +26,15 @@
 				<td>${list.cinema_name}</td>
 				<td>${list.cinema_info}</td>
 				<td>
-				<form:form method="post" action="cinemaInfoRegist" modelAttribute="cinemaVO">
+				<form:form method="post" action="cinemaInfoList" modelAttribute="cinemaVO">
 					<input type="hidden" name="cinema_code" value="${list.cinema_code}"/>
-					<input type="submit" class="btn btn-primary" value="상영관 등록"  id="subBtn" />
+					<input type="submit" class="btn btn-secondary" value="상영관 목록 " id="subBtn" />
 				</form:form>
 				</td>
 				<td>
-				<form:form method="post" action="cinemaInfoList" modelAttribute="cinemaVO">
+				<form:form method="post" action="cinemaInfoRegist" modelAttribute="cinemaVO">
 					<input type="hidden" name="cinema_code" value="${list.cinema_code}"/>
-					<input type="submit" class="btn btn-dark" value="상영관 리스트 " id="subBtn" />
+					<input type="submit" class="btn btn-primary" value="상영관 등록"  id="subBtn" />
 				</form:form>
 				</td>
 				<td>

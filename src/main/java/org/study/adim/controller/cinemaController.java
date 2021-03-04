@@ -85,6 +85,7 @@ public class cinemaController {
 	@PostMapping("cinemaInfoRoomDelete")
 	public String cinemaInfoRoomDelete(CinemaRoomVO cinemaRoomVO, Model model, HttpServletRequest request) throws Exception {
 		int cinemaroom_code = Integer.parseInt(request.getParameter("cinemaroom_code"));
+		System.out.println("cinemaInfoRoomDelete controller - cinemaroom_code :  "+cinemaroom_code);
 		CinemaRoomVO cinemaRoom = new CinemaRoomVO();
 		cinemaRoomDAO.deleCode(cinemaroom_code);
 		model.addAttribute("cinemaRoom", cinemaRoom);

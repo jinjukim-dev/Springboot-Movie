@@ -53,7 +53,7 @@
 <div class="container">
 	<form:form method="post"  action="MoviescheduleRegist"  modelAttribute="MovieScheduleVO"  id="movieScheduleRegist" >
 		<br />
-		<h3 class="title-w3pvt mb-10"  id="title" style="font-size: 35px;" >영화 상영관 스케줄 등록🎬</h3>
+		<h3 class="title-w3pvt mb-10"  id="title" style="font-size: 35px;" ><span style = "background-color:#FFFFE0">${movie_sub}</span> 상영관 스케줄 등록📅</h3>
 		<br/><br/>
 		<div class="form-group">
 			<br />
