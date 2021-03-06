@@ -25,9 +25,10 @@
 ### 업데이트
 - bootstap4 이용해서 화면 개선
 - DB에 cinemaroom table 추가해서 reservation, schedule table 수정
+- DB에 member table에 birth 추가
 
 ### 데이터베이스 설계서 - ERD
-<img src = "https://user-images.githubusercontent.com/62095517/109464347-e251b780-7aa9-11eb-9a38-e0fe3868a9be.png" height="400" width="700">
+<img src = "https://user-images.githubusercontent.com/62095517/110200483-a3ed3b80-7ea1-11eb-8d8c-b66fc1528069.png" height="400" width="700">
 
 ### UI
 #### 사용자
@@ -39,7 +40,7 @@
 <br/>
 - 사용자 기능
 <div>
-<img src = "https://user-images.githubusercontent.com/62095517/109459022-4fad1a80-7aa1-11eb-8d84-b5aec5e2ad48.png" width="45%">
+<img src = "https://user-images.githubusercontent.com/62095517/110200534-d26b1680-7ea1-11eb-839f-aae6f7c37d03.png" width="45%">
 <img src = "https://user-images.githubusercontent.com/62095517/109459041-5a67af80-7aa1-11eb-99c8-a1f0571f682c.png" width="45%">
 </div>
 <br/>
