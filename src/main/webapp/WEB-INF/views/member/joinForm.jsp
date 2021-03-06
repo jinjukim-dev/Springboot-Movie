@@ -30,6 +30,9 @@
 			<br />
 			<form:input path="email" class="form-control" placeholder="이메일" />
 			<form:errors path="email" />
+			<br/>
+			<form:input path="birth" class="form-control" placeholder="생년월일 ex)2021-01-01" />
+			<br/>
 			<br /> <br /> <input type="submit" class="btn btn-primary" value="가입하기" id="subBtn" />
 		</div>
 	</form:form>

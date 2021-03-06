@@ -27,6 +27,8 @@
 			<form:input path="name" class="form-control"  value="${member.name}" />
 			<br />
 			<form:input path="email" class="form-control"  value="${member.email}" />
+			<br />
+			<form:input path="birth" class="form-control"  value="${member.birth}"  readonly="true" />
 			<br /> <br /> <input type="submit" class="btn btn-primary" value="정보 수정" id="subBtn" />
 		</div>
 	</form:form>

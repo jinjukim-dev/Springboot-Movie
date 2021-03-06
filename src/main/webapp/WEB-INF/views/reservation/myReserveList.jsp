@@ -11,10 +11,11 @@
 		<thead>
 			<tr>
 				<th>지점명</th>
-				<th>관</th>
+				<th>상영관</th>
 				<th>영화</th>
 				<th>상영시작시간</th>
 				<th>예매 날짜</th>
+				<th>좌석</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -25,6 +26,7 @@
 				<td>${list.movie_sub}</td>
 				<td>${list.start_time}</td>
 				<td>${list.schedule_date}</td>
+				<td>${list.set_num}</td>
 			</tr>
 		</c:forEach>
 		</tbody>

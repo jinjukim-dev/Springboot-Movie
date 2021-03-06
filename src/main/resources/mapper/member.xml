@@ -7,7 +7,7 @@
  	</select>
  	
  	<insert id="insert" parameterType="org.study.member.MemberVO" useGeneratedKeys="true" keyProperty="id">
- 		insert into member (id, password, name, email, regDate) values (#{id}, #{password}, #{name}, #{email}, now())
+ 		insert into member (id, password, name, email, birth, regDate) values (#{id}, #{password}, #{name}, #{birth}, #{email}, now())
  	</insert>
  	
  	<update id="update" parameterType="org.study.member.MemberVO">
@@ -18,7 +18,9 @@
  		select * from member
  	</select>
  	
- 	<select id="count" resultType="java.lang.Integer">select count(*) from Member</select>
+ 	<select id="count" resultType="java.lang.Integer">
+ 		select count(*) from Member
+ 	</select>
  	
  	<select id="selectById" parameterType="java.lang.String" resultType="org.study.member.MemberVO">
  		select * from member where id = #{id}

@@ -2,25 +2,31 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.study.reservation" >
 
-	<insert id="insert" parameterType="org.study.reservation.ReservationInfoVO">
-		insert into reservation (id, cinema_code, movie_code, schedule_code, cinemaroom_code) values 
-		(#{id}, #{cinema_code}, #{movie_code}, #{schedule_code}, #{cinemaroom_code})
+	<insert id="insert" parameterType="org.study.admin.ReserveVO">
+		insert into reservation (id, cinema_code, movie_code, schedule_code, cinemaroom_code, seat_num) values 
+		(#{id}, #{cinema_code}, #{movie_code}, #{schedule_code}, #{cinemaroom_code}, #{seat_num})
 	</insert>
-	
-	<select id="selectAll" resultType="org.study.reservation.ReservationVO">
-		select * from reservation
-	</select>
 	
 	<select id="selectAllReserve" resultType="org.study.admin.ReserveVO">
 		select * from reservation
 	</select>
 	
-	<!-- 예매 내역 조회 -->
+	<!-- 나의 예매 내역 조회 -->
 	<select id="selectIdReserve" resultType="org.study.admin.DataVO">
-		select r.id, mv.name, c.cinema_name, cr.cinema_room, m.movie_sub, s.start_time, s.schedule_date
-		from cinemainfo c, movie m, schedule s, reservation r, member mv, cinemaroom cr
-		where r.cinema_code=c.cinema_code and r.movie_code=m.movie_code and r.cinemaroom_code=cr.cinemaroom_code
-		and r.schedule_code=s.schedule_code and r.id=mv.id and r.id = #{id};
+		select distinct r.id "id", m.name "name", c.cinema_name "cinema_name", cr.cinema_room "cinema_room", 
+		mo.movie_sub "movie_sub", s.schedule_date  "schedule_date",  s.start_time "start_time", r.seat_num "seat_num" 
+		from reservation r, member m, cinemainfo c, movie mo, schedule s, cinemaroom cr
+		where r.id=m.id and r.cinema_code=c.cinema_code and r.cinemaroom_code=cr.cinemaroom_code and
+	    r.movie_code=mo.movie_code and r.schedule_code=s.schedule_code and r.id = #{id};
+	</select>
+	
+	<!-- 예매 화면 Page-1 -->
+	<select id="selectScheduleAll" resultType="org.study.reservation.ReservationInfoVO">
+		select distinct mo.movie_sub "movie_sub", mo.movie_age "movie_age", c.cinema_name "cinema_name", cr.cinema_room "cinema_room",
+		s.schedule_date "schedule_data", s.start_time "start_time", s.end_time "end_time", c.cinema_code "cinema_code", mo.movie_code "movie_code",
+		s.schedule_code "schedule_code", cr.cinemaroom_code "cinemaroom_code"
+		from reservation r, member m, cinemainfo c, movie mo, schedule s, cinemaroom cr
+		where s.cinema_code=c.cinema_code and s.movie_code=mo.movie_code and s.cinemaroom_code=cr.cinemaroom_code;
 	</select>
 	
 	<!-- 예매수 조회 -->
@@ -29,7 +35,7 @@
 	</select>
 	
 	<!-- 중복처리 -->
-	<select id="selectDup" parameterType="java.util.Map" resultType="org.study.reservation.ReservationVO" >
+	<select id="selectDup" parameterType="java.util.Map" resultType="org.study.admin.ReserveVO" >
 		select * from reservation where schedule_code = #{schedule_code} and seat_num IN(#{seat})
 	</select>
 

@@ -26,7 +26,7 @@ public class RestScheduleController {
 	@Autowired
 	CinemaRoomDAO cinemaroomDAO;
 	
-	//@RequestParam("cinema_code") int cinema_code
+	/* admin - 스케줄 등록 시 지점에 따라 상영관 정보 받아오기 */
 	@PostMapping("getRoomInfo/{cinema_code}")
 	public Map getRoom(@PathVariable("cinema_code") int cinema_code) throws Exception {
 		List<CinemaRoomVO> cinemaRoom = cinemaroomDAO.selectCode(cinema_code);
@@ -36,18 +36,6 @@ public class RestScheduleController {
 		for(int i=0; i<cinemaRoom.size(); i++) {
 			optionList.add(cinemaRoom.get(i).getCinemaroom_code());
 		}
-		
-//		Map<String, String> map = new HashMap<>();
-//		for(int i=0; i<cinemaRoom.size(); i++) {
-//			map.put("cinemaroom_code", cinemaRoom.get(i).getCinemaroom_code()+"");
-//			map.put("cinema_room", cinemaRoom.get(i).getCinema_room());
-//		}
-//		
-//		System.out.println("---- Map 출력 ------");
-//		for(String key : map.keySet()) {
-//			String value = (String) map.get(key);
-//			System.out.println(key + " : " + value);
-//		}
 		
 		Map<Integer , String> map = new HashMap<>();
 		for(int i=0; i<cinemaRoom.size(); i++) {

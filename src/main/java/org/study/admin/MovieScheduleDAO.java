@@ -23,4 +23,10 @@ public class MovieScheduleDAO {
 		return results;
 	}
 	
+	/* RestReserveController */
+	public List<MovieScheduleVO> selectMovieSchedule2(int movie_code)  throws Exception {
+		List<MovieScheduleVO> results = sqlSession.selectList("org.study.schedule.selectMovieSchedule", movie_code); 
+		return results;
+	}
+	
 }

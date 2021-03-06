@@ -12,6 +12,7 @@
 				<th>아이디</th>
 				<th>이름</th>
 				<th>이메일</th>
+				<th>생년월일</th>
 				<th>가입날짜</th>
 				<th></th>
 			</tr>
@@ -22,6 +23,7 @@
 				<td>${list.id}</td>
 				<td>${list.name}</td>
 				<td>${list.email}</td>
+				<td>${list.birth}</td>
 				<td>${list.regDate}</td>
 				<td>
 				<form:form  method="post"  action="memDelete" modelAttribute="MemberVO">

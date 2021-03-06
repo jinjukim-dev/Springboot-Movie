@@ -2,7 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.study.movie" >
  	<insert id="insert" parameterType="org.study.admin.MovieVO" useGeneratedKeys="true" keyProperty="id">
- 		insert into movie (movie_code, movie_sub, movie_direc, movie_gen,movie_open,movie_age,movie_time, movie_poster) values (#{movie_code}, #{movie_sub}, #{movie_direc},  #{movie_gen}, #{movie_open}, #{movie_age}, #{movie_time}, #{movie_poster})
+ 		insert into movie (movie_code, movie_sub, movie_direc, movie_gen,movie_open,movie_age,movie_time, movie_poster) values 
+ 		(#{movie_code}, #{movie_sub}, #{movie_direc},  #{movie_gen}, #{movie_open}, #{movie_age}, #{movie_time}, #{movie_poster})
  	</insert>
  	
  	<!-- 최근등록된 영화부터 보여주기 -->

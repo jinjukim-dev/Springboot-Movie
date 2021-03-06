@@ -7,6 +7,7 @@ public class ReserveVO {
 	private int movie_code;
 	private int schedule_code;
 	private int cinemaroom_code;
+	private int seat_num;
 	public int getReservation_code() {
 		return reservation_code;
 	}
@@ -43,5 +44,12 @@ public class ReserveVO {
 	public void setCinemaroom_code(int cinemaroom_code) {
 		this.cinemaroom_code = cinemaroom_code;
 	}
+	public int getSeat_num() {
+		return seat_num;
+	}
+	public void setSeat_num(int seat_num) {
+		this.seat_num = seat_num;
+	}
+	
 
 }

@@ -4,50 +4,51 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.study.admin.ReserveDAO;
+import org.study.admin.ReserveVO;
 
 @Service
 public class ReservationServiceImpl implements ReservationService {
 
 	@Autowired
-	private ReservationDAO reservationDao;
+	private ReserveDAO reserveDAO;
 
 	@Override
-	public void insert(ReservationInfoVO reserveInfo) throws Exception {
-		reservationDao.insert(reserveInfo);
+	public void insert(ReserveVO reserve) throws Exception {
+		reserveDAO.insert(reserve);
 
 	}
-
-	// 전체 예약 내역 가져오기
-	@Override
-	public List<ReservationVO> selectAll() throws Exception {
-
-		return reservationDao.selectAll();
-	}
-
-	// 예약된 영화 count
-	/*
-	 * @Override public List<Object> selectCount() throws Exception { return
-	 * reservationDao.selectCount(); }
-	 */
 	
 	// 예약된 영화 count
 	@Override
 	public List<Object> selectCount() throws Exception {
-		return reservationDao.selectCount();
+		return reserveDAO.selectCount();
 	}
 
 	//중복
 	@Override
-	public List<ReservationVO> selectDup(String seat, String schedule_code) throws Exception {
+	public List<ReserveVO> selectDup(String seat, String schedule_code) throws Exception {
 		// TODO Auto-generated method stub
 		System.out.println(seat + "/" + schedule_code);
-		return reservationDao.selectDup(seat, schedule_code);
+		return reserveDAO.selectDup(seat, schedule_code);
 	}
 
 	@Override
 	public void updateSeat_num(int schedule_code) throws Exception {
 		// TODO Auto-generated method stub
-		reservationDao.updateSeat_num(schedule_code);
+		reserveDAO.updateSeat_num(schedule_code);
+	}
+
+	@Override
+	public List<ReserveVO> selectAll() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* 예매 page-1 정보 */
+	@Override
+	public List<ReservationInfoVO> selectScheduleAll() throws Exception {
+		return reserveDAO.selectScheduleAll();
 	}
 
 }

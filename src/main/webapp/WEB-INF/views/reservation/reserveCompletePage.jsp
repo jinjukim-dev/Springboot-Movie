@@ -3,20 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <title>영화예매 완료창</title>
-	<table>
-		<tr class="sub">
-			<th>${reserveInfo.id}님 예매가 완료되었습니다.</th>
-		</tr>
-		<tr>
-			<td>
-				<br>
-				영화관 : ${reserveInfo.cinema_name } - ${reserveInfo.cinema_room }
-				<br>
-				영화 : ${reserveInfo.movie_sub }
-				<br>
-				<fmt:formatDate var="reserveDay" value="${reserveInfo.day }" pattern="yyyy-MM-dd(E)" />
-				시간 : ${reserveDay } / ${reserveInfo.start_time } - ${reserveInfo.end_time }
-				<br>
-			</td>
-		</tr>
-	</table>
+	
+	<center>
+		<h3 style="font-size: 28px; font-weight: bold; margin-top: 230px;">
+		영화 예매가 완료되었습니다. 🎉<br/>
+		예매 확인 메뉴에서 예매 내역을 확인할 수 있습니다.
+		</h3>
+	</center>
+	
